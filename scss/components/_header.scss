@@ -1,0 +1,111 @@
+header{
+  width:100%;
+  background:rgba(0, 0, 0, 0.555);
+  min-height: 50px;
+  position: absolute;
+  z-index: 10;
+
+  #logo{
+    display: inline-block;
+    height: 100%;
+    float: left;
+    font-family: "Oswald", sans-serif;
+    color: white;
+    margin-top: 18px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .logo{
+    font-family: "Mukta";
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  #menu-btn{
+    display: none;
+    float: right;
+    margin-top: 0px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #mainmenu {
+    font-family: "Mukta";
+    float: right;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    list-style: none;
+    position:relative;
+
+    li{
+      float:left;
+      a{
+        display: inline-block;
+        padding: 25px 15px 25px 15px;
+        line-height: 35px;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        outline: none;
+      }
+      &:hover{
+        background:#ccc;
+      }
+      &:hover > .submenu{
+          display: block;
+          opacity: 1;
+          background: #000;
+          transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition-delay: 200ms;
+          transition-duration: 1s;
+      }
+    }//li
+
+    .submenu{
+      display: none;
+      opacity: 1;
+      position: absolute;
+      top:60px;
+      float:left;
+  
+      li{
+        font-weight: normal;
+        border-bottom: solid 1px #333;
+        letter-spacing: 0;
+        display: block;
+        float: none;
+        text-transform: none;
+        a{
+          display: inline-block;
+          min-width:250px;
+          padding: 5px 30px;
+          line-height: 35px;
+          text-decoration: none;
+          color: #fff;
+          text-align: left;
+          outline: none;
+
+          &:hover{
+            background-color: #E20E0F;
+          }
+        }
+        
+      }
+    }// submenu
+    
+  }// mainmenu
+ 
+  
+
+}//header
+

@@ -7,7 +7,7 @@ FPSlider.init({
   elementId: "fp-slider",
   dots: true,
   infinite: false,
-  speed: 50,
+  speed: 5000,
   slidesToShow: 3,
   slidesToScroll: 3,
   controls:true,

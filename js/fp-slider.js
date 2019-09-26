@@ -44,6 +44,7 @@ class FP_Slider{
     this.slides = settings.slides;
     this.execute();
   }
+
   /**
    * Auto excute method for initiatiating the slider and createing 
    * the DOM content for the slider
@@ -75,7 +76,7 @@ class FP_Slider{
     div.setAttribute('data-show',true);
     div.setAttribute('data-posx',this.windowWidth * i);
     div.setAttribute('data-slide',i);
-    div.setAttribute('data-active',0);
+    div.setAttribute('data-active',i==0?true:false);
     div.style.left = this.windowWidth * i + "px";
     // creating image
     let image = document.createElement('img');
@@ -110,16 +111,20 @@ class FP_Slider{
         // document.body.dataset.about
         console.log("before: ",div.dataset.slide,div.style.left);
         
+        // moves forword
         if(div.dataset.slide == 0 && parseInt(div.style.left) <= 0){
-          if(div.dataset.active == 1)
+          if(div.dataset.active == true)
             forward = true;
         }
-        
-        if(div.dataset.slide == slidesToShow-1 && parseInt(div.style.left) <= 0){
+        // 
+        if(div.dataset.slide == slidesToShow-1 && parseInt(div.style.left) <= 0 ){
           if(div.dataset.active == 1)
              forward = false;
+          // div.dataset.active == true
         }
         
+
+
         if(forward){
           console.log("f");
           div.style.left = parseInt(div.style.left) - windowWidth +"px";
@@ -128,6 +133,12 @@ class FP_Slider{
           console.log("b");
         }
         
+
+        div.dataset.active = false;
+        if(div.style.left == "0px"){
+          div.dataset.active = true;
+        }
+
       }
       
   }

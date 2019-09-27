@@ -26,7 +26,7 @@ class FP_Slider{
     this.pageWidth = document.body.clientWidth;
     this.pageHeight = document.body.clientHeight;
     this.interval = null;
-
+    this.forword = true; /** default direction */
   }
 
   /**
@@ -42,6 +42,7 @@ class FP_Slider{
     this.slidesToScroll = settings.slidesToScroll;
     this.controls = settings.controls;
     this.slides = settings.slides;
+    this.forword = true; /** default direction */
     this.execute();
   }
 
@@ -104,36 +105,32 @@ class FP_Slider{
    * 
    */
   run(slidesToShow,windowWidth){
-      let i = 1, forward = true;
-      //windowWidth =  100;
+    
+      let forword = null;
+      // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
-        
-        // document.body.dataset.about
-        console.log("before: ",div.dataset.slide,div.style.left);
-        
-        // moves forword
-        if(div.dataset.slide == 0 && parseInt(div.style.left) <= 0){
-          if(div.dataset.active == true)
-            forward = true;
+        // backword
+        if(div.dataset.active == 'true' && div.dataset.slide == slidesToShow-1){
+          forword = false;
         }
-        // 
-        if(div.dataset.slide == slidesToShow-1 && parseInt(div.style.left) <= 0 ){
-          if(div.dataset.active == 1)
-             forward = false;
-          // div.dataset.active == true
+        //forword
+        if(div.dataset.active == 'true' && div.dataset.slide == 0){
+          forword = true;
         }
-        
+      }
 
-
-        if(forward){
-          console.log("f");
+      // print the direction
+      forword == true?console.log("Direction: ->"):console.log("Direction: <-");
+    
+      for(let div of document.querySelectorAll('[data-slide]')) {
+        // moves the slides forword and backword
+        if(forword){
           div.style.left = parseInt(div.style.left) - windowWidth +"px";
         }else{
           div.style.left = parseInt(div.style.left) + windowWidth +"px";
-          console.log("b");
         }
         
-
+        // change the active state
         div.dataset.active = false;
         if(div.style.left == "0px"){
           div.dataset.active = true;
@@ -175,66 +172,3 @@ class FP_Slider{
 
 
 
-
-// ;(function() {
-
-//   var slider = function() {
-    
-//     var backImg = [];
-//     backImg[0] = "http://www.matejmichalik.com/black-and-white-photography/galleries/post-427/full/Black-and-white-photo-Tanah-lot-bali.jpg";
-//     backImg[1] = "http://cdn.digital-photo-secrets.com/images/black-white-dendelion-large.jpg";
-//     backImg[2] = "http://picturescollections.com/wp-content/uploads/2012/04/Black_And_White_Pictures.jpg";
-    
-//     var i = 0;
-//     var x = (backImg.length) - 1;
-//     var int = 3500;
-    
-//     interval = setInterval(showNext, int); // hoist?
-    
-//     var elements = {
-//       slider: document.querySelector('.slider'),
-//       btn: { 
-//         left: document.querySelector('.btnLeft'),
-//         right: document.querySelector('.btnRight')
-//       }
-//     }
-    
-//     var startInterval = function() {
-//        interval = setInterval(showNext, int);
-//     }
-    
-//     var stopInterval = function() {
-//       clearInterval(interval);
-//     }
-    
-//     var attachEvents = function() {
-//       elements.btn.left.onclick = function() { showPrevious(); };
-//       elements.btn.right.onclick = function() {  showNext(); };
-//       elements.slider.addEventListener("mouseenter", stopInterval);
-//       elements.slider.addEventListener("mouseleave", startInterval);
-//     };
-    
-//     var changeImg = function() {
-//       elements.slider.style.backgroundImage = 'url(' + backImg[i] + ')';
-//     }
-    
-//     var initialize = (function() {
-//       attachEvents();
-//       changeImg(i);
-//     })();
-
-//     var showPrevious = function() {
-//       (i <= 0) ? i = 3 : i--;
-//       changeImg(i);
-//     };
-
-//     var showNext = function() {
-//       (i >= x) ? i = 0 : i++;
-//       changeImg(i);
-//     };
-
-//   };
-
-//   slider();
-
-// })();

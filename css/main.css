@@ -184,3 +184,24 @@ header #mainmenu .submenu li a:hover {
   position: absolute;
   top: 0;
 }
+
+.fp-slider .fp-slide .fp-slide-content {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 30px;
+  top: calc(100% - 70%);
+  padding: 20px;
+  min-width: 100px;
+  min-height: 100px;
+  z-index: 11;
+}
+
+.fp-slider .fp-slide .fp-slide-content h2 {
+  font-size: 80px;
+  color: #fff;
+}
+
+.fp-slider .fp-slide .fp-slide-content p {
+  font-size: 20px;
+  color: #fff;
+}

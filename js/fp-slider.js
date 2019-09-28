@@ -54,8 +54,10 @@ class FP_Slider{
     console.log(this.toString());
     let slider = document.createElement('div');
     slider.className = 'fp-slider';
+    slider.id = 'fp-slider-id';
+    slider.setAttribute("data-direction",true);
+
     // create slides
-    
     for(let i = 0;i<this.slidesToShow;i++){
       var slide = this.makeSlide(this.slides[i],i);
       slider.append(slide);
@@ -105,26 +107,28 @@ class FP_Slider{
    * 
    */
   run(slidesToShow,windowWidth){
-    
-      let forword = null;
+      let slider = document.getElementById("fp-slider-id");
+
+      let forword = slider.dataset.direction;
       // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
         // backword
         if(div.dataset.active == 'true' && div.dataset.slide == slidesToShow-1){
-          forword = false;
+          forword = 'false';
+          slider.dataset.direction = false;
         }
         //forword
         if(div.dataset.active == 'true' && div.dataset.slide == 0){
-          forword = true;
+          forword = 'true';
+          slider.dataset.direction = true;
         }
       }
-
       // print the direction
-      forword == true?console.log("Direction: ->"):console.log("Direction: <-");
+      forword === 'true'?console.log("Direction: ->"):console.log("Direction: <-");
     
       for(let div of document.querySelectorAll('[data-slide]')) {
         // moves the slides forword and backword
-        if(forword){
+        if(forword== 'true'){
           div.style.left = parseInt(div.style.left) - windowWidth +"px";
         }else{
           div.style.left = parseInt(div.style.left) + windowWidth +"px";

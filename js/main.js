@@ -9,7 +9,7 @@ FPSlider.init({
   infinite: false,
   speed: 5000,
   slidesToShow: 3,
-  slidesToScroll: 3,//mark sigma// apoorva
+  slidesToScroll: 3,
   slidesCount:3,
   controls:true,
   slides:[

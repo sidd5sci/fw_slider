@@ -9,7 +9,7 @@ FPSlider.init({
   infinite: false,
   speed: 5000,
   slidesToShow: 3,
-  slidesToScroll: 3,
+  slidesToScroll: 3,//mark sigma// apoorva
   slidesCount:3,
   controls:true,
   slides:[
@@ -17,7 +17,7 @@ FPSlider.init({
       name: '',
       title: 'First slide',
       description: 'lorem ipsum suet doler.',
-      image: '../images/2.jpg',
+      image: '../docs/images/2.jpg',
       color:'#ccc',
       layers:[
         { name:'1',
@@ -46,14 +46,14 @@ FPSlider.init({
       name:'',
       title:'Second slide',
       description:'lorem ipsum suet doler.',
-      image: '../images/2.jpg',
+      image: '../docs/images/2.jpg',
       color:'#ccc',
     },
     { 
       name:'',
       title:'Third slide',
       description:'lorem ipsum suet doler.',
-      image: '../images/3.jpg',
+      image: '../docs/images/3.jpg',
       color:'#ccc'
     },
   ],

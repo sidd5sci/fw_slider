@@ -17,7 +17,7 @@ FPSlider.init({
       name: '',
       title: 'First slide',
       description: 'lorem ipsum suet doler.',
-      image: 'images/2.jpg',
+      image: '../images/2.jpg',
       color:'#ccc',
       layers:[
         { name:'1',
@@ -46,14 +46,14 @@ FPSlider.init({
       name:'',
       title:'Second slide',
       description:'lorem ipsum suet doler.',
-      image: 'images/2.jpg',
+      image: '../images/2.jpg',
       color:'#ccc',
     },
     { 
       name:'',
       title:'Third slide',
       description:'lorem ipsum suet doler.',
-      image: 'images/3.jpg',
+      image: '../images/3.jpg',
       color:'#ccc'
     },
   ],

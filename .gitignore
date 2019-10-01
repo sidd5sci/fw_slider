@@ -1,2 +1,3 @@
 *.js
 *.scss
+static/* linguist-vendored

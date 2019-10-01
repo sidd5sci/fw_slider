@@ -63,8 +63,24 @@ class FP_Slider{
       slider.append(slide);
     }
 
-    console.log(slider);
+    
+    let controls = document.createElement('div');
+    controls.className = 'fp-controls';
+    let container = document.createElement('div');
+    container.className = 'fp-pin-container';
+    container.style.width = (6.66 * this.slidesToShow) + '%';
+
+    for(let i=0;i<this.slidesToShow;i++){
+      var pin = document.createElement('div');
+      pin.className = 'fp-pin';
+      pin.setAttribute("data-pin",i);
+      pin.addEventListener("click",this.controlsListner);
+      container.append(pin);
+    }
+    controls.append(container);
+    slider.append(controls);
     this.sliderElement.append(slider);
+
   }
 
   /**
@@ -102,7 +118,12 @@ class FP_Slider{
 
     return div;
   }
-
+  /**
+   * 
+   */
+  controlsListner(){
+    alert("hello",this.className); 
+  }
   /**
    * 
    */

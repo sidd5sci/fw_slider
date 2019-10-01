@@ -205,3 +205,26 @@ header #mainmenu .submenu li a:hover {
   font-size: 20px;
   color: #fff;
 }
+
+.fp-slider .fp-controls {
+  position: absolute;
+  bottom: 35px;
+  left: calc(100% - 65%);
+  min-width: 400px;
+  min-height: 20px;
+}
+
+.fp-slider .fp-controls .fp-pin-container {
+  height: 1px;
+  margin: auto;
+}
+
+.fp-slider .fp-controls .fp-pin-container .fp-pin {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-right: 1em;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}

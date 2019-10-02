@@ -63,7 +63,7 @@ class FP_Slider{
       slider.append(slide);
     }
 
-    
+    // controls
     let controls = document.createElement('div');
     controls.className = 'fp-controls';
     let container = document.createElement('div');
@@ -77,6 +77,7 @@ class FP_Slider{
       pin.addEventListener("click",this.controlsListner);
       container.append(pin);
     }
+
     controls.append(container);
     slider.append(controls);
     this.sliderElement.append(slider);
@@ -92,11 +93,16 @@ class FP_Slider{
     
     let div = document.createElement('div');
     div.className = 'fp-slide';
+    div.id = 'fp-slide-'+i;
     div.setAttribute('data-show',true);
     div.setAttribute('data-posx',this.windowWidth * i);
     div.setAttribute('data-slide',i);
     div.setAttribute('data-active',i==0?true:false);
-    div.style.left = this.windowWidth * i + "px";
+    div.setAttribute('data-enter-animation-class',slide.enterAnimationClass);
+    div.setAttribute('data-exit-animation-class',slide.exitAnimationClass);
+    div.style.left = '0px';
+    div.style.background = slide.color;
+    div.style.zIndex = i * -1;
     // creating image
     let image = document.createElement('img');
     image.src = slide.image;
@@ -131,37 +137,24 @@ class FP_Slider{
       let slider = document.getElementById("fp-slider-id");
 
       let forword = slider.dataset.direction;
+      let index = -1;
       // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
         // backword
-        if(div.dataset.active == 'true' && div.dataset.slide == slidesToShow-1){
-          forword = 'false';
-          slider.dataset.direction = false;
+        if(div.dataset.active == 'true' ){
+          index = div.dataset.slide ;
+          div.dataset.active = false;
+          div.className = 'fp-slide '+ div.dataset.exitAnimationClass;
+          // setTimeout(function(){ document.querySelectorAll('[data-slide='+index+']').className = ''; }, 1000,index);
+          break;
         }
-        //forword
-        if(div.dataset.active == 'true' && div.dataset.slide == 0){
-          forword = 'true';
-          slider.dataset.direction = true;
-        }
+       
       }
-      // print the direction
-      forword === 'true'?console.log("Direction: ->"):console.log("Direction: <-");
-    
-      for(let div of document.querySelectorAll('[data-slide]')) {
-        // moves the slides forword and backword
-        if(forword== 'true'){
-          div.style.left = parseInt(div.style.left) - windowWidth +"px";
-        }else{
-          div.style.left = parseInt(div.style.left) + windowWidth +"px";
-        }
-        
-        // change the active state
-        div.dataset.active = false;
-        if(div.style.left == "0px"){
-          div.dataset.active = true;
-        }
-
-      }
+      index++;
+      let next = document.getElementById('fp-slide-'+index);
+      next.className = 'fp-slide '+ div.dataset.enterAnimationClass;
+      next.dataset.active = true;
+      console.log('index: ',next);
       
   }
 

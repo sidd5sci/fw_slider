@@ -19,6 +19,8 @@ FPSlider.init({
       description: 'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
+      enterAnimationClass:'animated fadeIin',
+      exitAnimationClass:'animated slideOutRight',
       layers:[
         { name:'1',
           left:100,
@@ -37,7 +39,7 @@ FPSlider.init({
           height:100,
           animation: 'fade',
           animationStart:200,
-          animationDuration:100,
+          animationDuration:100,  
           content: `<h1>text2</h1>`,
         }
       ]
@@ -48,13 +50,17 @@ FPSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
+      enterAnimationClass:'animated fadeIin',
+      exitAnimationClass:'animated slideOutRight',
     },
     { 
       name:'',
       title:'Third slide',
       description:'lorem ipsum suet doler.',
       image: '../docs/images/3.jpg',
-      color:'#ccc'
+      color:'#ccc',
+      enterAnimationClass:'animated fadeIin',
+      exitAnimationClass:'animated slideOutRight',
     },
   ],
   

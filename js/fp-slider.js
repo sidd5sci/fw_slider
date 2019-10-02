@@ -140,19 +140,26 @@ class FP_Slider{
       let index = -1;
       // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
+        
+        
         // backword
         if(div.dataset.active == 'true' ){
           index = div.dataset.slide ;
           div.dataset.active = false;
           div.className = 'fp-slide '+ div.dataset.exitAnimationClass;
+          
           // setTimeout(function(){ document.querySelectorAll('[data-slide='+index+']').className = ''; }, 1000,index);
           break;
         }
        
       }
+      //let pre = document.getElementById('fp-slide-'+index);
+      //if(pre != undefined)
+        //pre.className = 'fp-slide previous';
+      
       index++;
       let next = document.getElementById('fp-slide-'+index);
-      next.className = 'fp-slide '+ div.dataset.enterAnimationClass;
+      //next.className = 'fp-slide fp-active '+ next.dataset.enterAnimation;
       next.dataset.active = true;
       console.log('index: ',next);
       

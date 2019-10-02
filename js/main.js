@@ -19,8 +19,8 @@ FPSlider.init({
       description: 'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIin',
-      exitAnimationClass:'animated slideOutRight',
+      enterAnimationClass:'animated fadeIn',
+      exitAnimationClass:'animated slideOutLeft',
       layers:[
         { name:'1',
           left:100,
@@ -50,7 +50,7 @@ FPSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIin',
+      enterAnimationClass:'animated fadeIn',
       exitAnimationClass:'animated slideOutRight',
     },
     { 
@@ -59,8 +59,8 @@ FPSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/3.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIin',
-      exitAnimationClass:'animated slideOutRight',
+      enterAnimationClass:'animated fadeIn',
+      exitAnimationClass:'animated slideOutUp',
     },
   ],
   

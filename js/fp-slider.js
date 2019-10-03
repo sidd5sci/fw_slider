@@ -7,7 +7,7 @@
  * 
  */
 
-class FP_Slider{
+class FW_Slider{
 
   /**
    * Default constructor
@@ -30,7 +30,7 @@ class FP_Slider{
   }
 
   /**
-   * Init method to initialse the FP Slider 
+   * Init method to initialse the FW Slider 
    * @param {*} settings 
    */
   init(settings){
@@ -42,7 +42,7 @@ class FP_Slider{
     this.slidesToScroll = settings.slidesToScroll;
     this.controls = settings.controls;
     this.slides = settings.slides;
-    this.forword = true; /** default direction */
+    this.slidesCount = settings.slidesCount;
     this.execute();
   }
 
@@ -53,8 +53,8 @@ class FP_Slider{
   execute(){
     console.log(this.toString());
     let slider = document.createElement('div');
-    slider.className = 'fp-slider';
-    slider.id = 'fp-slider-id';
+    slider.className = 'fw-slider';
+    slider.id = 'fw-slider-id';
     slider.setAttribute("data-direction",true);
 
     // create slides
@@ -62,36 +62,70 @@ class FP_Slider{
       var slide = this.makeSlide(this.slides[i],i);
       slider.append(slide);
     }
-
     
     let controls = document.createElement('div');
-    controls.className = 'fp-controls';
+    controls.className = 'fw-controls';
     let container = document.createElement('div');
-    container.className = 'fp-pin-container';
+    container.className = 'fw-pin-container';
     container.style.width = (6.66 * this.slidesToShow) + '%';
 
     for(let i=0;i<this.slidesToShow;i++){
       var pin = document.createElement('div');
-      pin.className = 'fp-pin';
+      pin.className = 'fw-pin';
       pin.setAttribute("data-pin",i);
-      pin.addEventListener("click",this.controlsListner);
+      
       container.append(pin);
     }
     controls.append(container);
     slider.append(controls);
     this.sliderElement.append(slider);
+    console.log(slider);
+    this.controlsListner();
 
   }
 
   /**
-   * Create silde using silde data provided by the user 
+   * 
+   * @param {*} slide 
+   * @param {*} slideId 
+   */
+  makeLayers(slide,slideId){
+    let i = 0;
+    let layerGroup = document.createElement('div');
+    layerGroup.className = 'fw-layer-group';
+    slide.layers.forEach(function(l){
+
+        let layer = document.createElement("div");
+        layer.className = 'fw-layer';
+        layer.setAttribute('id','layer_'+slideId+'_'+i);
+        layer.setAttribute('data-type','text');
+        layer.setAttribute('data-name',l.name);
+        layer.setAttribute('data-left',l.left);
+        layer.setAttribute('data-top',l.top);
+        layer.setAttribute('data-width',l.width);
+        layer.setAttribute('data-height',l.height);
+        layer.setAttribute('data-animation',l.animation);
+        layer.setAttribute('data-animation-start',l.animationStart);
+        layer.setAttribute('data-animation-duration',l.animationDuration);
+        layer.append(l.content);
+
+        layerGroup.append(layer);
+        i++;
+    });
+    
+    return layerGroup;
+    
+  }
+
+  /**
+   * Create silde using silde paramenters provided by the user 
    * @param {*} slide 
    * @return div 
    */
   makeSlide(slide,i){
     
     let div = document.createElement('div');
-    div.className = 'fp-slide';
+    div.className = 'fw-slide';
     div.setAttribute('data-show',true);
     div.setAttribute('data-posx',this.windowWidth * i);
     div.setAttribute('data-slide',i);
@@ -104,7 +138,7 @@ class FP_Slider{
     
     // creating slide content
     let contentDiv = document.createElement('div');
-    contentDiv.className = 'fp-slide-content';
+    contentDiv.className = 'fw-slide-content';
     let heading = document.createElement('h2');
     heading.innerText = slide.title;  
     contentDiv.append(heading);
@@ -114,21 +148,20 @@ class FP_Slider{
     contentDiv.append(subtext);
 
     div.append(contentDiv);
+    div.append(this.makeLayers(slide,i));
     console.log(this.slidesToShow);
-
+   
     return div;
   }
+
   /**
-   * 
-   */
-  controlsListner(){
-    alert("hello",this.className); 
-  }
-  /**
-   * 
+   * main run method 
+   * this keep executing the itself after the interval 
+   * decleared by the user while defining the fw_slider 
+   * init parameters.
    */
   run(slidesToShow,windowWidth){
-      let slider = document.getElementById("fp-slider-id");
+      let slider = document.getElementById("fw-slider-id");
 
       let forword = slider.dataset.direction;
       // decide the direction 
@@ -166,7 +199,25 @@ class FP_Slider{
   }
 
   /**
-   * Start slider
+   * 
+   */
+  controlsListner = function(){
+
+    for(let pin of document.getElementsByClassName('fw-pin')) {
+      
+      pin.addEventListener("click",function(){
+        //alert(this.dataset.pin);
+          for(let p of document.getElementsByClassName('fw-pin')){
+            p.style.background = 'none';
+          }
+        this.style.background = '#ccc';
+      });
+    }
+    
+  }
+
+  /**
+   * Start slider 
    */
   start(){
     this.interval = setInterval(this.run, this.speed,this.slidesToShow,this.windowWidth);
@@ -192,6 +243,8 @@ class FP_Slider{
 
 
 }
+
+
 
 
 

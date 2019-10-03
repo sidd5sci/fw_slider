@@ -2,9 +2,9 @@
 
 console.log(document.documentElement.clientWidth);
 
-let FPSlider = new FP_Slider();
-FPSlider.init({
-  elementId: "fp-slider",
+let FWSlider = new FW_Slider();
+FWSlider.init({
+  elementId: "fw-slider",
   dots: true,
   infinite: false,
   speed: 5000,
@@ -48,16 +48,18 @@ FPSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
+      layers:[],
     },
     { 
       name:'',
       title:'Third slide',
       description:'lorem ipsum suet doler.',
       image: '../docs/images/3.jpg',
-      color:'#ccc'
+      color:'#ccc',
+      layers:[],
     },
   ],
   
 });
-FPSlider.start();
+FWSlider.start();
 

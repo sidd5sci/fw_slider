@@ -9,7 +9,7 @@ MENU
 1: Variables 
 2: Typography
 3: Header 
-4: Section
+4: Section  
 5: Slider
 */
 * {
@@ -164,14 +164,14 @@ header #mainmenu .submenu li a:hover {
 5: Slider
 =====================================
 */
-.fp-slider {
+.fw-slider {
   width: 100%;
   position: relative;
   overflow-x: hidden;
   height: 100vh;
 }
 
-.fp-slider .fp-slide {
+.fw-slider .fw-slide {
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
@@ -179,13 +179,13 @@ header #mainmenu .submenu li a:hover {
   position: absolute;
 }
 
-.fp-slider .fp-slide img {
+.fw-slider .fw-slide img {
   width: 100%;
   position: absolute;
   top: 0;
 }
 
-.fp-slider .fp-slide .fp-slide-content {
+.fw-slider .fw-slide .fw-slide-content {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 30px;
@@ -196,17 +196,25 @@ header #mainmenu .submenu li a:hover {
   z-index: 11;
 }
 
-.fp-slider .fp-slide .fp-slide-content h2 {
+.fw-slider .fw-slide .fw-slide-content h2 {
   font-size: 80px;
   color: #fff;
 }
 
-.fp-slider .fp-slide .fp-slide-content p {
+.fw-slider .fw-slide .fw-slide-content p {
   font-size: 20px;
   color: #fff;
 }
 
-.fp-slider .fp-controls {
+.fw-slider .fw-slide .fw-layer-group {
+  position: relative;
+}
+
+.fw-slider .fw-slide .fw-layer-group .fw-layer {
+  position: absolute;
+}
+
+.fw-slider .fw-controls {
   position: absolute;
   bottom: 35px;
   left: calc(100% - 65%);
@@ -214,17 +222,17 @@ header #mainmenu .submenu li a:hover {
   min-height: 20px;
 }
 
-.fp-slider .fp-controls .fp-pin-container {
+.fw-slider .fw-controls .fw-pin-container {
   height: 1px;
   margin: auto;
 }
 
-.fp-slider .fp-controls .fp-pin-container .fp-pin {
+.fw-slider .fw-controls .fw-pin-container .fw-pin {
   float: left;
   width: 10px;
   height: 10px;
   margin-right: 1em;
   border-radius: 50%;
-  background: #ccc;
+  border: 1px solid #ccc;
   cursor: pointer;
 }

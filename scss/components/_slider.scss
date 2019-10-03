@@ -61,12 +61,13 @@
     }
 
   }
-  .fw-arrow-control{
+  .fw-arrow-controls{
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    
     .fw-left-control{
       height:80px;
       width:80px;
@@ -74,10 +75,21 @@
       background: rgba(0, 0, 0, 0.466);
       border:2px solid #ccc;
       position: absolute;
-      left:0;
+      left: 40px;
+      top: calc(100% - 54%);
+      cursor: pointer;
     }
-    .fw-right-control{
 
+    .fw-right-control{
+      height:80px;
+      width:80px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.466);
+      border:2px solid #ccc;
+      position: absolute;
+      right: 40px;
+      top: calc(100% - 54%);
+      cursor: pointer;
     }
   }
   .fw-pin-controls{

@@ -4,7 +4,7 @@ Contact: sidd5sci@gmail.com
 License: MIT
 */
 /**   
-MENU
+MENU  
 ===================================== 
 1: Variables 
 2: Typography
@@ -227,7 +227,7 @@ header #mainmenu .submenu li a:hover {
   z-index: 0 !important;
 }
 
-.fw-slider .fw-arrow-control {
+.fw-slider .fw-arrow-controls {
   position: absolute;
   left: 0;
   right: 0;
@@ -235,14 +235,28 @@ header #mainmenu .submenu li a:hover {
   bottom: 0;
 }
 
-.fw-slider .fw-arrow-control .fw-left-control {
+.fw-slider .fw-arrow-controls .fw-left-control {
   height: 80px;
   width: 80px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.466);
   border: 2px solid #ccc;
   position: absolute;
-  left: 0;
+  left: 40px;
+  top: calc(100% - 54%);
+  cursor: pointer;
+}
+
+.fw-slider .fw-arrow-controls .fw-right-control {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.466);
+  border: 2px solid #ccc;
+  position: absolute;
+  right: 40px;
+  top: calc(100% - 54%);
+  cursor: pointer;
 }
 
 .fw-slider .fw-pin-controls {

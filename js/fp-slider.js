@@ -83,8 +83,10 @@ class FW_Slider{
     // arrow control
     let arrowLeft = document.createElement('div');
     arrowLeft.className = 'fw-left-control';
+    arrowLeft.setAttribute('data-control','left');
     let arrowRight = document.createElement('div');
     arrowRight.className = 'fw-right-control';
+    arrowRight.setAttribute('data-control','right');
 
 
     pinControls.append(container);
@@ -92,7 +94,7 @@ class FW_Slider{
     arrowControls.append(arrowRight);
     slider.append(arrowControls);
     slider.append(pinControls);
-    
+
     this.sliderElement.append(slider);
     console.log(slider);
     this.controlsListner();
@@ -230,7 +232,7 @@ class FW_Slider{
    * handle all the events for the controls of the slides
    */
   controlsListner(){
-
+    // pin controls
     for(let pin of document.getElementsByClassName('fw-pin')) {
       
       pin.addEventListener("click",function(){
@@ -252,7 +254,43 @@ class FW_Slider{
           
           
       });
+
+
     } 
+
+    // arrow controls
+    for(let arrow of document.querySelectorAll('[data-control]')) {
+      arrow.addEventListener('click',function(){
+        if(this.dataset.control == 'left'){
+          let index = -1;
+          for(let slide of document.querySelectorAll('[data-slide]')){
+            if(slide.dataset.active == 'true'){
+              index =  slide.dataset.slide;
+            }
+            slide.dataset.active = false;
+            slide.className = 'fw-slide fw-previous-junk'; 
+          }
+          console.log(index);
+          index--;
+          if(index == -1){
+            index = this.slidesToShow-1;
+            console.log(index);
+
+          }
+          console.log(index);
+          let slide = document.getElementById('fw-slide-'+index);
+          
+          slide.className = 'fw-slide fw-active';
+          slide.dataset.active = true;
+          
+        }
+
+        if(this.dataset.control == 'right'){
+
+        }
+
+      });
+    }
     
   }
 

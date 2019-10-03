@@ -109,7 +109,7 @@ class FW_Slider{
         layer.setAttribute('data-animation',l.animation);
         layer.setAttribute('data-animation-start',l.animationStart);
         layer.setAttribute('data-animation-duration',l.animationDuration);
-        layer.append(l.content);
+        layer.innerHTML = l.content;
 
         layerGroup.append(layer);
         i++;
@@ -127,7 +127,8 @@ class FW_Slider{
   makeSlide(slide,i){
     
     let div = document.createElement('div');
-    div.className = 'fw-slide';
+    i==0? div.className = 'fw-slide fw-active' : div.className = 'fw-slide fw-previous-junk';
+    div.id = 'fw-slide-'+i;
     div.setAttribute('data-show',true);
     div.setAttribute('data-posx',this.windowWidth * i);
     div.setAttribute('data-slide',i);
@@ -137,6 +138,7 @@ class FW_Slider{
     div.style.left = '0px';
     div.style.background = slide.color;
     div.style.zIndex = i * -1;
+    
     // creating image
     let image = document.createElement('img');
     image.src = slide.image;
@@ -165,43 +167,56 @@ class FW_Slider{
    * this keep executing the itself after the interval 
    * decleared by the user while defining the fw_slider 
    * init parameters.
+   * @param {*} slidesToShow 
+   * @param {*} windowWidth 
    */
   run(slidesToShow,windowWidth){
       let slider = document.getElementById("fw-slider-id");
 
       let forword = slider.dataset.direction;
       let index = -1;
+
+      function sendToBack(index,name){ 
+        document.getElementById('fw-slide-'+index).className = 'fw-slide '+name;
+      }
       // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
-        
-        
         // backword
+        console.log("class->",div.className);
         if(div.dataset.active == 'true' ){
           index = div.dataset.slide ;
           div.dataset.active = false;
-          div.className = 'fp-slide '+ div.dataset.exitAnimationClass;
+          div.className = 'fw-slide '+ div.dataset.exitAnimationClass;
           
-          // setTimeout(function(){ document.querySelectorAll('[data-slide='+index+']').className = ''; }, 1000,index);
+          setTimeout(sendToBack, 3000,index,'fw-previous');
           break;
         }
-       
       }
-      //let pre = document.getElementById('fp-slide-'+index);
-      //if(pre != undefined)
-        //pre.className = 'fp-slide previous';
-      
+
       index++;
-      let next = document.getElementById('fp-slide-'+index);
-      //next.className = 'fp-slide fp-active '+ next.dataset.enterAnimation;
+      if(index >= slidesToShow){
+        // re-adjust the slide index for handling out of bound exception
+        index = 0; 
+      }
+
+      let next = document.getElementById('fw-slide-'+index);
+      next.className = 'fw-slide fw-active '+ next.dataset.enterAnimationClass;
       next.dataset.active = true;
-      console.log('index: ',next);
+
+      index++;
+      if(index >= slidesToShow){
+        // re-adjust the slide index for handling out of bound exception
+        index = 0; 
+      }
+      setTimeout(sendToBack, 0,index,'fw-previous-junk');
       
   }
 
   /**
-   * 
+   * Event handler 
+   * handle all the events for the controls of the slides
    */
-  controlsListner = function(){
+  controlsListner(){
 
     for(let pin of document.getElementsByClassName('fw-pin')) {
       

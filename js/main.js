@@ -20,7 +20,7 @@ FWSlider.init({
       image: '../docs/images/2.jpg',
       color:'#ccc',
       enterAnimationClass:'animated fadeIn',
-      exitAnimationClass:'animated slideOutLeft',
+      exitAnimationClass:'animated slideOutUp',
       layers:[
         { name:'1',
           left:100,
@@ -52,6 +52,7 @@ FWSlider.init({
       color:'#ccc',
       enterAnimationClass:'animated fadeIn',
       exitAnimationClass:'animated slideOutRight',
+      layers:[],
     },
     { 
       name:'',
@@ -60,7 +61,8 @@ FWSlider.init({
       image: '../docs/images/3.jpg',
       color:'#ccc',
       enterAnimationClass:'animated fadeIn',
-      exitAnimationClass:'animated slideOutUp',
+      exitAnimationClass:'animated slideOutRight',
+      layers:[],
     },
   ],
   

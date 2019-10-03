@@ -3,14 +3,14 @@ Auther : Siddhartha singh
 Contact: sidd5sci@gmail.com
 License: MIT
 */
-/** 
+/**   
 MENU
 ===================================== 
 1: Variables 
 2: Typography
-3: Header 
-4: Section  
-5: Slider
+3: Header  
+4: Section   
+5: Slider 
 */
 * {
   border: 0;
@@ -212,6 +212,14 @@ header #mainmenu .submenu li a:hover {
 
 .fw-slider .fw-slide .fw-layer-group .fw-layer {
   position: absolute;
+}
+
+.fw-slider .fw-slide.fw-previous-junk {
+  z-index: -10 !important;
+}
+
+.fw-slider .fw-slide.fw-active {
+  z-index: 0 !important;
 }
 
 .fw-slider .fw-controls {

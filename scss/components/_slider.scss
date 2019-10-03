@@ -46,6 +46,16 @@
       }
     }
 
+    &.fw-previous-junk{
+      z-index: -10 !important; 
+    }
+    &.fw-previous{
+      z-index: -20 !important; 
+    }
+    &.fw-active{
+      z-index:0 !important;
+    }
+
   }
 
   .fw-controls{

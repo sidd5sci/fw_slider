@@ -169,6 +169,7 @@ header #mainmenu .submenu li a:hover {
   position: relative;
   overflow-x: hidden;
   height: 100vh;
+  overflow: hidden;
 }
 
 .fw-slider .fw-slide {
@@ -218,11 +219,33 @@ header #mainmenu .submenu li a:hover {
   z-index: -10 !important;
 }
 
+.fw-slider .fw-slide.fw-previous {
+  z-index: -20 !important;
+}
+
 .fw-slider .fw-slide.fw-active {
   z-index: 0 !important;
 }
 
-.fw-slider .fw-controls {
+.fw-slider .fw-arrow-control {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.fw-slider .fw-arrow-control .fw-left-control {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.466);
+  border: 2px solid #ccc;
+  position: absolute;
+  left: 0;
+}
+
+.fw-slider .fw-pin-controls {
   position: absolute;
   bottom: 35px;
   left: calc(100% - 65%);
@@ -230,12 +253,12 @@ header #mainmenu .submenu li a:hover {
   min-height: 20px;
 }
 
-.fw-slider .fw-controls .fw-pin-container {
+.fw-slider .fw-pin-controls .fw-pin-container {
   height: 1px;
   margin: auto;
 }
 
-.fw-slider .fw-controls .fw-pin-container .fw-pin {
+.fw-slider .fw-pin-controls .fw-pin-container .fw-pin {
   float: left;
   width: 10px;
   height: 10px;

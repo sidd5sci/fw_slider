@@ -8,9 +8,9 @@ FWSlider.init({
   dots: true,
   infinite: false,
   speed: 5000,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-  slidesCount:3,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  slidesCount:4,
   controls:true,
   slides:[
     { 
@@ -19,7 +19,7 @@ FWSlider.init({
       description: 'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIn',
+      enterAnimationClass:'animated zoomIn',
       exitAnimationClass:'animated slideOutUp',
       layers:[
         { name:'1',
@@ -50,8 +50,8 @@ FWSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/2.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIn',
-      exitAnimationClass:'animated slideOutRight',
+      enterAnimationClass:'animated zoomIn',
+      exitAnimationClass:'animated rollOut',
       layers:[],
     },
     { 
@@ -60,12 +60,43 @@ FWSlider.init({
       description:'lorem ipsum suet doler.',
       image: '../docs/images/3.jpg',
       color:'#ccc',
-      enterAnimationClass:'animated fadeIn',
+      enterAnimationClass:'animated zoomIn',
       exitAnimationClass:'animated slideOutRight',
       layers:[],
+    },
+    { 
+      name: '',
+      title: 'Fouth slide',
+      description: 'lorem ipsum suet doler.',
+      image: '../docs/images/2.jpg',
+      color:'#ccc',
+      enterAnimationClass:'animated zoomIn',
+      exitAnimationClass:'animated slideOutUp',
+      layers:[
+        { name:'1',
+          left:100,
+          top:100,
+          width:100,
+          height:100,
+          animation:'fade',
+          animationStart:100,
+          animationDuration:100,
+          content: `<h1>text1</h1>`,
+        },
+        { name: '1',
+          left:100,
+          top:100,
+          width:100,
+          height:100,
+          animation: 'fade',
+          animationStart:200,
+          animationDuration:100,  
+          content: `<h1>text2</h1>`,
+        }
+      ]
     },
   ],
   
 });
-FWSlider.start();
+// FWSlider.start();
 

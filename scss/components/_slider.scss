@@ -3,7 +3,8 @@
   position: relative;
   overflow-x: hidden;
   height: 100vh;
-  
+  overflow: hidden;
+
   .fw-slide{
     width:100%;
     min-height: 100vh;
@@ -37,6 +38,7 @@
         color:#fff;
       }
     }
+
     .fw-layer-group{
       position: relative;
 
@@ -49,21 +51,42 @@
     &.fw-previous-junk{
       z-index: -10 !important; 
     }
+
     &.fw-previous{
       z-index: -20 !important; 
     }
+
     &.fw-active{
       z-index:0 !important;
     }
 
   }
+  .fw-arrow-control{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .fw-left-control{
+      height:80px;
+      width:80px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.466);
+      border:2px solid #ccc;
+      position: absolute;
+      left:0;
+    }
+    .fw-right-control{
 
-  .fw-controls{
+    }
+  }
+  .fw-pin-controls{
     position: absolute;
     bottom: 35px;
     left: calc(100% - 65%);
     min-width: 400px;
     min-height: 20px;
+    
     
     .fw-pin-container{
       //width:50%;

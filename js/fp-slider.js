@@ -63,9 +63,11 @@ class FW_Slider{
       slider.append(slide);
     }
 
-    // controls
-    let controls = document.createElement('div');
-    controls.className = 'fw-controls';
+    // pin controls
+    let pinControls = document.createElement('div');
+    pinControls.className = 'fw-pin-controls';
+    let arrowControls = document.createElement('div');
+    arrowControls.className = 'fw-arrow-controls';
     let container = document.createElement('div');
     container.className = 'fw-pin-container';
     container.style.width = (6.66 * this.slidesToShow) + '%';
@@ -77,9 +79,20 @@ class FW_Slider{
       
       container.append(pin);
     }
+    
+    // arrow control
+    let arrowLeft = document.createElement('div');
+    arrowLeft.className = 'fw-left-control';
+    let arrowRight = document.createElement('div');
+    arrowRight.className = 'fw-right-control';
 
-    controls.append(container);
-    slider.append(controls);
+
+    pinControls.append(container);
+    arrowControls.append(arrowLeft);
+    arrowControls.append(arrowRight);
+    slider.append(arrowControls);
+    slider.append(pinControls);
+    
     this.sliderElement.append(slider);
     console.log(slider);
     this.controlsListner();
@@ -225,9 +238,21 @@ class FW_Slider{
           for(let p of document.getElementsByClassName('fw-pin')){
             p.style.background = 'none';
           }
-        this.style.background = '#ccc';
+          this.style.background = '#ccc';
+          for(let slide of document.querySelectorAll('[data-slide]')){
+            if(slide.dataset.slide == pin.dataset.pin){
+              slide.className = 'fw-slide fw-active '+slide.dataset.enterAnimationClass;
+              slide.dataset.active = true;
+            }
+            else{
+              slide.className = 'fw-slide fw-previous-junk';
+              slide.dataset.active = false;
+            }
+          }
+          
+          
       });
-    }
+    } 
     
   }
 

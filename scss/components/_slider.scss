@@ -15,7 +15,6 @@
       width:100%;
       position: absolute;
       top:0;
-
     }
 
     .fw-slide-content{
@@ -55,10 +54,12 @@
     left: calc(100% - 65%);
     min-width: 400px;
     min-height: 20px;
+    
     .fw-pin-container{
       //width:50%;
       height: 1px;
       margin:auto;
+      
       .fw-pin{
         float:left;
         width:10px;

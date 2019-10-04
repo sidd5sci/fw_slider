@@ -13,6 +13,8 @@ FW Slider features
   - Works on all browser
   - mobile responsive
   - Availible for Free and OpenSource
+
+  
 ## Licensing
 
 FP SLIDER is licensed under the [MIT license](LICENSE).
@@ -44,7 +46,7 @@ Inclide the main.css file in your page
 
 Include the fw-slider.js file in your page 
 ```
-<script src="../js/fp-slider.js"></script>
+<script src="../js/fw-slider.js"></script>
 ```
 
 then make a fw slider 

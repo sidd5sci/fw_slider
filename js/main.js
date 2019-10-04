@@ -98,5 +98,5 @@ FWSlider.init({
   ],
   
 });
-// FWSlider.start();
+FWSlider.start();
 

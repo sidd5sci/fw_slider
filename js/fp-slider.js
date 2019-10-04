@@ -56,6 +56,8 @@ class FW_Slider{
     slider.className = 'fw-slider';
     slider.id = 'fw-slider-id';
     slider.setAttribute("data-direction",true);
+    slider.setAttribute("data-slides",this.slidesToShow);
+    slider.setAttribute("data-slides-to-scroll",this.slidesToScroll);
 
     // create slides
     for(let i = 0;i<this.slidesToShow;i++){
@@ -76,7 +78,10 @@ class FW_Slider{
       var pin = document.createElement('div');
       pin.className = 'fw-pin';
       pin.setAttribute("data-pin",i);
-      
+      pin.style.background = 'none';
+      if(i == 0){
+        pin.style.background = '#ccc';
+      }
       container.append(pin);
     }
     
@@ -168,7 +173,7 @@ class FW_Slider{
     let subtext = document.createElement('p');
     subtext.innerText = slide.description;  
     contentDiv.append(heading); 
-    contentDiv.append(subtext);
+    contentDiv.append(subtext); 
 
     div.append(contentDiv);
     div.append(this.makeLayers(slide,i));
@@ -243,7 +248,7 @@ class FW_Slider{
           this.style.background = '#ccc';
           for(let slide of document.querySelectorAll('[data-slide]')){
             if(slide.dataset.slide == pin.dataset.pin){
-              slide.className = 'fw-slide fw-active '+slide.dataset.enterAnimationClass;
+              slide.className = 'fw-slide fw-active ' + slide.dataset.enterAnimationClass;
               slide.dataset.active = true;
             }
             else{
@@ -252,15 +257,16 @@ class FW_Slider{
             }
           }
           
-          
       });
 
 
     } 
-
     // arrow controls
     for(let arrow of document.querySelectorAll('[data-control]')) {
-      arrow.addEventListener('click',function(){
+      arrow.addEventListener('click',function(slidesToShow){
+        slidesToShow = document.getElementById('fw-slider-id').dataset.slides;
+        
+        // left is pressed
         if(this.dataset.control == 'left'){
           let index = -1;
           for(let slide of document.querySelectorAll('[data-slide]')){
@@ -270,23 +276,49 @@ class FW_Slider{
             slide.dataset.active = false;
             slide.className = 'fw-slide fw-previous-junk'; 
           }
-          console.log(index);
           index--;
           if(index == -1){
-            index = this.slidesToShow-1;
-            console.log(index);
-
+            index = slidesToShow-1;
           }
-          console.log(index);
           let slide = document.getElementById('fw-slide-'+index);
-          
-          slide.className = 'fw-slide fw-active';
+          slide.className = 'fw-slide fw-active ' + slide.dataset.enterAnimationClass;
           slide.dataset.active = true;
+          // changing the active pin
+          for(let p of document.getElementsByClassName('fw-pin')){
+            p.style.background = 'none';
+            if(p.dataset.pin == index){
+              p.style.background = '#ccc';
+            }
+          }
+          
+
           
         }
 
+        // right is pressed
         if(this.dataset.control == 'right'){
-
+          let index = -1;
+          for(let slide of document.querySelectorAll('[data-slide]')){
+            if(slide.dataset.active == 'true'){
+              index =  slide.dataset.slide;
+            }
+            slide.dataset.active = false;
+            slide.className = 'fw-slide fw-previous-junk'; 
+          }
+          index++;
+          if(index >= slidesToShow){
+            index = 0;
+          }
+          let slide = document.getElementById('fw-slide-'+index);
+          slide.className = 'fw-slide fw-active ' + slide.dataset.enterAnimationClass;
+          slide.dataset.active = true;
+          // changing the active pin
+          for(let p of document.getElementsByClassName('fw-pin')){
+            p.style.background = 'none';
+            if(p.dataset.pin == index){
+              p.style.background = '#ccc';
+            }
+          }
         }
 
       });

@@ -155,6 +155,7 @@ class FW_Slider{
     div.setAttribute('data-active',i==0?true:false);
     div.setAttribute('data-enter-animation-class',slide.enterAnimationClass);
     div.setAttribute('data-exit-animation-class',slide.exitAnimationClass);
+    div.setAttribute('data-interval',slide.interval);
     div.style.left = '0px';
     div.style.background = slide.color;
     div.style.zIndex = i * -1;
@@ -189,19 +190,25 @@ class FW_Slider{
    * @param {*} slidesToShow 
    * @param {*} windowWidth 
    */
-  run(slidesToShow,windowWidth){
+  run(slidesToShow,windowWidth,startTime){
+      let d = new Date();
+      let currentTime = d.getTime();
+      
       let slider = document.getElementById("fw-slider-id");
 
       let forword = slider.dataset.direction;
-      let index = -1;
+      let index = -1,intr = false;
 
       function sendToBack(index,name){ 
         document.getElementById('fw-slide-'+index).className = 'fw-slide '+name;
       }
-      // decide the direction 
+
       for(let div of document.querySelectorAll('[data-slide]')) {
-        // backword
+        // search for active
         if(div.dataset.active == 'true' ){
+          if( (currentTime - startTime) > div.dataset.interval){
+            intr = true;
+          }
           index = div.dataset.slide ;
           div.dataset.active = false;
           div.className = 'fw-slide '+ div.dataset.exitAnimationClass;
@@ -270,6 +277,7 @@ class FW_Slider{
           for(let slide of document.querySelectorAll('[data-slide]')){
             if(slide.dataset.active == 'true'){
               index =  slide.dataset.slide;
+              slide.className = 'fw-slide ' + slide.dataset.exitAnimationClass;
             }
             slide.dataset.active = false;
             slide.className = 'fw-slide fw-previous-junk'; 
@@ -289,8 +297,6 @@ class FW_Slider{
             }
           }
           
-
-          
         }
 
         // right is pressed
@@ -299,6 +305,7 @@ class FW_Slider{
           for(let slide of document.querySelectorAll('[data-slide]')){
             if(slide.dataset.active == 'true'){
               index =  slide.dataset.slide;
+              slide.className = 'fw-slide ' + slide.dataset.exitAnimationClass;
             }
             slide.dataset.active = false;
             slide.className = 'fw-slide fw-previous-junk'; 
@@ -328,7 +335,9 @@ class FW_Slider{
    * Start slider 
    */
   start(){
-    this.interval = setInterval(this.run, this.speed,this.slidesToShow,this.windowWidth);
+    let d = new Date();
+    let startTime = d.getTime();
+    this.interval = setInterval(this.run, this.speed,this.slidesToShow,this.windowWidth,startTime);
   }
 
   /**

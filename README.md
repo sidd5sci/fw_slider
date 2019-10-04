@@ -5,6 +5,7 @@ FW slider is hussle free and easy to use slider with powerful features. fully cu
 ## [live Demo](https://sidd5sci.github.io/fw_slider/docs/index.html)
 
  [![Build Status](https://travis-ci.org/tommyod/KDEpy.svg?branch=master)](https://travis-ci.org/tommyod/KDEpy) [![Documentation Status](https://readthedocs.org/projects/kdepy/badge/?version=latest)](http://kdepy.readthedocs.io/en/latest/?badge=latest) 
+  [![Open Source Helpers](https://www.codetriage.com/sidd5sci/fw_slider/badges/users.svg)](https://www.codetriage.com/sidd5sci/fw_slider)
 ---------
 FW Slider features 
 

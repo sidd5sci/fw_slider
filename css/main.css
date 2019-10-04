@@ -3,7 +3,7 @@ Auther : Siddhartha singh
 Contact: sidd5sci@gmail.com
 License: MIT
 */
-/**   
+/**    
 MENU  
 ===================================== 
 1: Variables 
@@ -182,6 +182,7 @@ header #mainmenu .submenu li a:hover {
 
 .fw-slider .fw-slide img {
   width: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
 }

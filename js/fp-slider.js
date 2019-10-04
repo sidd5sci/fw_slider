@@ -177,7 +177,6 @@ class FW_Slider{
 
     div.append(contentDiv);
     div.append(this.makeLayers(slide,i));
-    console.log(this.slidesToShow);
    
     return div;
   }
@@ -202,7 +201,6 @@ class FW_Slider{
       // decide the direction 
       for(let div of document.querySelectorAll('[data-slide]')) {
         // backword
-        console.log("class->",div.className);
         if(div.dataset.active == 'true' ){
           index = div.dataset.slide ;
           div.dataset.active = false;

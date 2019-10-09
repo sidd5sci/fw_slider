@@ -26,7 +26,7 @@ FP SLIDER is licensed under the [MIT license](LICENSE).
 You can donate as small as $5 
 [paypal](https://paypal.me/learnkevin) 
 
-this is an open source project please support us for keeping us running 
+this is an open source project please support us for keep us running 
 
 # how to use
 - ## html 
@@ -165,4 +165,4 @@ sidd5sci@gmail.com
 You can donate as small as $5 
 [paypal](https://paypal.me/learnkevin) 
 
-this is an open source project please support us for keeping us running 
+this is an open source project please support us for keep us running 

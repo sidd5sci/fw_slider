@@ -209,11 +209,14 @@ header #mainmenu .submenu li a:hover {
 }
 
 .fw-slider .fw-slide .fw-layer-group {
-  position: relative;
+  width: 100%;
+  background: #ff0000;
+  height: 1px;
 }
 
 .fw-slider .fw-slide .fw-layer-group .fw-layer {
   position: absolute;
+  background: #ccc;
 }
 
 .fw-slider .fw-slide.fw-previous-junk {
@@ -230,10 +233,8 @@ header #mainmenu .submenu li a:hover {
 
 .fw-slider .fw-arrow-controls {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  width: 100%;
+  top: calc(100% - 54%);
 }
 
 .fw-slider .fw-arrow-controls .fw-left-control {

@@ -41,11 +41,11 @@
     }
 
     .fw-layer-group{
-      position: relative;
+      width: 100%;
 
       .fw-layer{
         position: absolute;
-        
+        background: #ccc;
       }
     }
 
@@ -64,11 +64,9 @@
   }
   .fw-arrow-controls{
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    
+    width: 100%;
+    top: calc(100% - 54%);
+
     .fw-left-control{
       height:80px;
       width:80px;

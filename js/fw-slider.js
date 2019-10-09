@@ -131,6 +131,11 @@ class FW_Slider{
         layer.setAttribute('data-animation-duration',l.animationDuration);
         layer.innerHTML = l.content;
 
+        layer.style.left = l.left + '%';
+        layer.style.top = l.top + '%';
+        layer.style.width = l.width + 'px';
+        layer.style.height = l.height + 'px';
+
         layerGroup.append(layer);
         i++;
     });
@@ -227,6 +232,32 @@ class FW_Slider{
       let next = document.getElementById('fw-slide-'+index);
       next.className = 'fw-slide fw-active '+ next.dataset.enterAnimationClass;
       next.dataset.active = true;
+
+      // changing the pin
+      for(let p of document.getElementsByClassName('fw-pin')){
+        p.style.background = 'none';
+        if(p.dataset.pin == index){
+          p.style.background = '#ccc';
+        }
+      }
+
+      // running animation
+      if(next.childElementCount){
+        console.log("C>",next.childNodes);
+        let childs = next.childNodes;
+        let layers = childs[2];
+        
+        if(layers.childElementCount>=0){
+          for(let i =0 ;i<layers.childElementCount;i++){
+            let layer = layers.childNodes[i];
+            console.log(layer);
+            setTimeout(function(layer){
+              layer.className = 'fw-layer '+layer.dataset.animation;
+            },layer.dataset.animationStart,layer);
+          }
+        }
+
+      }
 
       index++;
       if(index >= slidesToShow){

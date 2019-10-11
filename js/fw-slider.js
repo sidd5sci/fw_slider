@@ -217,7 +217,24 @@ class FW_Slider{
           index = div.dataset.slide ;
           div.dataset.active = false;
           div.className = 'fw-slide '+ div.dataset.exitAnimationClass;
-          
+              // running animation
+          if(div.childElementCount){
+            console.log("C>",div.childNodes);
+            let childs = div.childNodes;
+            let layers = childs[2];
+            
+            if(layers.childElementCount>=0){
+              for(let i =0 ;i<layers.childElementCount;i++){
+                let layer = layers.childNodes[i];
+                // adding the animation the layer            
+                setTimeout(function(layer){
+                  layer.className = 'fw-layer '+layer.dataset.animation;
+                },layer.dataset.animationStart,layer);
+              }
+            }
+
+          }
+
           setTimeout(sendToBack, 3000,index,'fw-previous');
           break;
         }
@@ -241,24 +258,17 @@ class FW_Slider{
         }
       }
 
-      // running animation
-      if(next.childElementCount){
-        console.log("C>",next.childNodes);
-        let childs = next.childNodes;
-        let layers = childs[2];
-        
-        if(layers.childElementCount>=0){
-          for(let i =0 ;i<layers.childElementCount;i++){
-            let layer = layers.childNodes[i];
-            console.log(layer);
-            setTimeout(function(layer){
-              layer.className = 'fw-layer '+layer.dataset.animation;
-            },layer.dataset.animationStart,layer);
-          }
-        }
+      
+      
+      // removing the animation 
+      setTimeout(function(layer){
+        let layers = document.getElementsByClassName('fw-layer');
+        layers.forEach(function(l){
+          l.className = 'fw-layer';
+        });
+      },5000);
 
-      }
-
+      // moving the slide to the back
       index++;
       if(index >= slidesToShow){
         // re-adjust the slide index for handling out of bound exception

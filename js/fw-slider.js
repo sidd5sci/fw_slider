@@ -65,6 +65,12 @@ class FW_Slider{
       slider.append(slide);
     }
 
+    this.sliderElement.append(slider); 
+    console.log(slider);
+    
+    if(!this.controls)
+      return; // if controls are false 
+    
     // pin controls
     let pinControls = document.createElement('div');
     pinControls.className = 'fw-pin-controls';
@@ -100,10 +106,52 @@ class FW_Slider{
     slider.append(arrowControls);
     slider.append(pinControls);
 
-    this.sliderElement.append(slider);
-    console.log(slider);
+    
     this.controlsListner();
+  
+  }
 
+  /**
+   * Create silde using silde paramenters provided by the user 
+   * @param {*} slide 
+   * @return div 
+   */
+  makeSlide(slide,i){
+    
+    let div = document.createElement('div');
+    i==0? div.className = 'fw-slide fw-active' : div.className = 'fw-slide fw-previous-junk';
+    div.id = 'fw-slide-'+i;
+    div.setAttribute('data-show',true);
+    div.setAttribute('data-posx',this.windowWidth * i);
+    div.setAttribute('data-slide',i);
+    div.setAttribute('data-active',i==0?true:false);
+    div.setAttribute('data-enter-animation-class',slide.enterAnimationClass);
+    div.setAttribute('data-exit-animation-class',slide.exitAnimationClass);
+    div.setAttribute('data-interval',slide.interval);
+    div.style.left = '0px';
+    div.style.background = slide.color;
+    div.style.zIndex = i * -1;
+    
+    // creating image
+    let image = document.createElement('img');
+    image.src = slide.image;
+    div.append(image);
+    
+    // creating slide content
+    let contentDiv = document.createElement('div');
+    contentDiv.className = 'fw-slide-content'; 
+    let heading = document.createElement('h2');
+    heading.innerText = slide.title;  
+    contentDiv.append(heading);
+    let subtext = document.createElement('p');
+    subtext.innerText = slide.description;  
+    contentDiv.append(heading); 
+    contentDiv.append(subtext); 
+
+    div.append(contentDiv);
+    div.append(this.makeLayers(slide,i));
+   
+    return div;
   }
 
   /**
@@ -143,50 +191,6 @@ class FW_Slider{
     return layerGroup;
     
   }
-
-  /**
-   * Create silde using silde paramenters provided by the user 
-   * @param {*} slide 
-   * @return div 
-   */
-  makeSlide(slide,i){
-    
-    let div = document.createElement('div');
-    i==0? div.className = 'fw-slide fw-active' : div.className = 'fw-slide fw-previous-junk';
-    div.id = 'fw-slide-'+i;
-    div.setAttribute('data-show',true);
-    div.setAttribute('data-posx',this.windowWidth * i);
-    div.setAttribute('data-slide',i);
-    div.setAttribute('data-active',i==0?true:false);
-    div.setAttribute('data-enter-animation-class',slide.enterAnimationClass);
-    div.setAttribute('data-exit-animation-class',slide.exitAnimationClass);
-    div.setAttribute('data-interval',slide.interval);
-    div.style.left = '0px';
-    div.style.background = slide.color;
-    div.style.zIndex = i * -1;
-    
-    // creating image
-    let image = document.createElement('img');
-    image.src = slide.image;
-    div.append(image);
-    
-    // creating slide content
-    let contentDiv = document.createElement('div');
-    contentDiv.className = 'fw-slide-content';
-    let heading = document.createElement('h2');
-    heading.innerText = slide.title;  
-    contentDiv.append(heading);
-    let subtext = document.createElement('p');
-    subtext.innerText = slide.description;  
-    contentDiv.append(heading); 
-    contentDiv.append(subtext); 
-
-    div.append(contentDiv);
-    div.append(this.makeLayers(slide,i));
-   
-    return div;
-  }
-
   /**
    * main run method 
    * this keep executing the itself after the interval 

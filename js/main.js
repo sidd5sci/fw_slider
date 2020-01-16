@@ -9,7 +9,7 @@ FWSlider.init({
   infinite: false,
   speed: 5000,
   slidesToShow: 4,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   slidesCount:4,
   controls:true,
   slides:[
@@ -102,5 +102,5 @@ FWSlider.init({
   ],
   
 });
-FWSlider.start();
+// FWSlider.start();
 
